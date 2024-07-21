@@ -2,8 +2,8 @@
 version: 2.1
 
 jobs:
-  build:            # job name
-    docker:         # executor type
+  build: # job name
+    docker: # executor type
       - image: cimg/base:current # Docker image that installs Docker and has Git,
     working_directory: ~/app
     steps:
@@ -18,7 +18,7 @@ jobs:
           command: |
             echo "Inside the Build and push Docker image step"
             docker --version # print the version for logging
-            docker build -t sudkul/sample-express-app .        
-            docker tag sudkul/sample-express-app sudkul/sample-express-app:1.0.0
+            docker build -t jordanbmowry/sample-express-app .        
+            docker tag jordanbmowry/sample-express-app jordanbmowry/sample-express-app:1.0.0
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker push sudkul/sample-express-app:1.0.0
+            docker push jordanbmowry/sample-express-app:1.0.0
